@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HaazriPay</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f3f5f7; }
+    h1 { color: #164e63; }
+    .card { background: white; padding: 16px; border-radius: 12px; margin: 12px 0; }
+    input, button { box-sizing: border-box; width: 100%; padding: 12px; margin: 6px 0; }
+    button { background: #087f8c; color: white; border: 0; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>HaazriPay</h1>
+  <p>Attendance & Salary Manager</p>
+  <div class="card">
+    <h3>कर्मचारी जोडा</h3>
+    <input id="name" placeholder="कर्मचाऱ्याचे नाव">
+    <input id="salary" type="number" placeholder="दैनिक पगार ₹">
+    <button onclick="addEmployee()">कर्मचारी जोडा</button>
+  </div>
+  <div class="card">
+    <h3>कर्मचारी यादी</h3>
+    <ul id="employees"></ul>
+  </div>
+  <script>
+    function addEmployee() {
+      const name = document.getElementById('name').value.trim();
+      const salary = document.getElementById('salary').value;
+      if (!name || salary === '' || Number(salary) < 0) {
+        alert('नाव आणि योग्य पगार भरा.');
+        return;
+      }
+      const li = document.createElement('li');
+      li.textContent = name + ' — ₹' + Number(salary) + ' प्रतिदिन';
+      document.getElementById('employees').appendChild(li);
+      document.getElementById('name').value = '';
+      document.getElementById('salary').value = '';
+    }
+  </script>
+</body>
+</html>
